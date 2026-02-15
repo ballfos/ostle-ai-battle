@@ -160,6 +160,12 @@ def is_winner(board: list[Cell], player: Cell) -> bool:
     return opponent_count <= 3
 
 
+def is_same_board(board1: list[Cell], board2: list[Cell] | None) -> bool:
+    if board2 is None:
+        return False
+    return all(c1 == c2 for c1, c2 in zip(board1, board2))
+
+
 def xy_to_index(x: int, y: int) -> int:
     return y * BOARD_WIDTH + x
 
