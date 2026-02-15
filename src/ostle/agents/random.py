@@ -20,6 +20,5 @@ class RandomAgent(Agent):
         if not legal_moves:
             raise ValueError("No legal moves available")
 
-        time.sleep(1)
 
         return choice(legal_moves)
