@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = ["pygame>=2.6.1", "tqdm>=4.67.3"]
+scripts = { ostle = "ostle.app.main:main" }
 
 [dependency-groups]
 dev = ["pytest>=9.0.2", "ruff>=0.15.1"]
