@@ -1,4 +1,5 @@
-from ostle.agents.random import RandomAgent
+from ostle.agents.kyawan import KyawanAgent
+from ostle.agents.kyawan2 import KyawanAgentV2
 from ostle.app.engine import AsyncEngine
 from ostle.app.window import OstleWindow
 
@@ -9,8 +10,8 @@ from ostle.app.window import OstleWindow
 
 def main():
     # 1. エージェントの作成
-    agent1 = RandomAgent()
-    agent2 = RandomAgent()
+    agent1 = KyawanAgent()
+    agent2 = KyawanAgentV2()
 
     # 2. エンジンの初期化
     engine = AsyncEngine(agent1, agent2)
