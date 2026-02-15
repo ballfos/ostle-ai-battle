@@ -1,0 +1,28 @@
+[project]
+name = "ostle-ai-battle"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["pygame>=2.6.1", "tqdm>=4.67.3"]
+
+[dependency-groups]
+dev = ["pytest>=9.0.2", "ruff>=0.15.1"]
+
+# === ビルド設定 ===
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# === Ruffの設定 ===
+[tool.ruff]
+lint.select = ["E", "F", "I", "TID"]
+lint.fixable = ["ALL"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["ostle"]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
