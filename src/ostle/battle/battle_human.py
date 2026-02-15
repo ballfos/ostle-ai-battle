@@ -8,7 +8,20 @@ import pygame
 
 from ostle.agents.base import Agent
 from ostle.agents.inoue_agent.agent import InoueAgent
+from ostle.agents.inoue_agent.agent2 import InoueAgentKAI
+from ostle.agents.kyawan import KyawanAgent
+from ostle.agents.kyawan2 import KyawanAgentV2
 from ostle.agents.random import RandomAgent
+
+# 利用可能なエージェント一覧
+AVAILABLE_AGENTS = {
+	"inoue": InoueAgent,
+	"inoue2": InoueAgentKAI,
+	"random": RandomAgent,
+	"kyawan": KyawanAgent,
+	"kyawan2": KyawanAgentV2,
+}
+
 from ostle.app.engine import AsyncEngine, EngineState
 from ostle.battle import battle_window
 from ostle.core.board import Cell, Move, get_legal_moves
@@ -75,7 +88,7 @@ class HumanBattleWindow(battle_window.OstleWindow):
 
 			# 人間のターン中は持ち時間をリセット
 			if self.engine.turn == self.human_player:
-				self.engine.time_remaining[self.human_player] = 1_000_000_000.0
+				self.engine.time_remaining[self.human_player] = 1_000000.0
 
 			# エンジン更新（ゲーム進行）
 			self.engine.update(dt_ms)
@@ -287,16 +300,19 @@ class HumanBattleWindow(battle_window.OstleWindow):
 
 
 def choose_agent(name: str) -> Agent:
-	if name.lower() == "random":
-		return RandomAgent()
-	return InoueAgent()
+	agent_class = AVAILABLE_AGENTS.get(name.lower())
+	if agent_class is None:
+		print(f"利用可能なモデル: {', '.join(AVAILABLE_AGENTS.keys())}")
+		raise ValueError(f"不明なモデル: {name}")
+	return agent_class()
 
 
 def main() -> None:
 	human_side = input("人間は先手(1)か後手(2)か？ [1/2]: ").strip() or "1"
 	human_player = Cell.Player1 if human_side == "1" else Cell.Player2
 
-	ai_type = input("AI種類を選択 [inoue/random]: ").strip() or "inoue"
+	print(f"利用可能なモデル: {', '.join(AVAILABLE_AGENTS.keys())}")
+	ai_type = input("AI種類を選択 (デフォルト: inoue): ").strip() or "inoue"
 	ai_agent = choose_agent(ai_type)
 
 	human_agent = HumanAgent()
