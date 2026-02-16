@@ -49,8 +49,8 @@ class OstleWindow:
 
         # --- フォント設定 (Mac対応) ---
         font_names = [
-            "Hiragino Kaku Gothic ProN",
-            "Hiragino Kaku Gothic ProN",
+            "HYu Gothic",
+            "Yu Gothic",
             "Yu Gothic",
             "Meiryo",
             "Arial",
