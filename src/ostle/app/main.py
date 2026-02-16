@@ -1,3 +1,6 @@
+from ostle.agents.inoue_agent.agent import InoueAgent
+from ostle.agents.inoue_agent.agent2 import InoueAgentKAI
+from ostle.agents.inoue_agent.agent3 import InoueDQNAgent
 from ostle.agents.kyawan2 import KyawanAgentV2
 from ostle.agents.kyawan3 import KyawanAgentV3
 from ostle.app.engine import AsyncEngine
@@ -10,7 +13,7 @@ from ostle.app.window import OstleWindow
 
 def main():
     # 1. エージェントの作成
-    agent1 = KyawanAgentV3()
+    agent1 = InoueDQNAgent()
     agent2 = KyawanAgentV2()
 
     # 2. エンジンの初期化
