@@ -9,6 +9,7 @@ import pygame
 from ostle.agents.base import Agent
 from ostle.agents.inoue_agent.agent import InoueAgent
 from ostle.agents.inoue_agent.agent2 import InoueAgentKAI
+from ostle.agents.inoue_agent.agent3 import InoueDQNAgent
 from ostle.agents.kyawan import KyawanAgent
 from ostle.agents.kyawan2 import KyawanAgentV2
 from ostle.agents.random import RandomAgent
@@ -17,6 +18,7 @@ from ostle.agents.random import RandomAgent
 AVAILABLE_AGENTS = {
 	"inoue": InoueAgent,
 	"inoue2": InoueAgentKAI,
+	"inoue3": InoueDQNAgent,
 	"random": RandomAgent,
 	"kyawan": KyawanAgent,
 	"kyawan2": KyawanAgentV2,

@@ -4,8 +4,14 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["pygame>=2.6.1", "tqdm>=4.67.3"]
-scripts = { ostle = "ostle.app.main:main", benchmark = "ostle.app.benchmark:main" }
+dependencies = [
+	"pygame>=2.6.1",
+	"tqdm>=4.67.3",
+	"torch==1.13.1; sys_platform=='darwin' and platform_machine=='x86_64' and python_version<'3.12'",
+	"torch>=2.2.0; sys_platform=='darwin' and platform_machine=='arm64'",
+	"torch>=2.2.0; sys_platform!='darwin'",
+]
+scripts = { ostle = "ostle.app.main:main" }
 
 [dependency-groups]
 dev = ["pytest>=9.0.2", "ruff>=0.15.1"]
